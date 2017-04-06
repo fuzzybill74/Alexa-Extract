@@ -95,7 +95,7 @@ namespace AlexaExtract
 
                 //VOICE SUCKS!
                 // TODO we need a human voice... like many with different accents
-               synthesizer.Speak("Alexah!");
+               synthesizer.Speak("Alexa!");
                 Thread.Sleep(500);
                 synthesizer.Speak(str);
                 // Wait for answer and validate it according to code!
