@@ -10,5 +10,6 @@ namespace AlexaExtraction
     {
         public string name { get; set; }
         public string type { get; set; }
+        public List<string> slots { get; set; } = new List<string>();
     }
 }

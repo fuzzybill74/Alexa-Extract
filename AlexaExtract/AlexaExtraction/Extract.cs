@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,13 +64,29 @@ namespace AlexaExtraction
             return rstPatient;
         }
 
-        public List<String> ExtractSlots(String folder, sc_intents intents )
+        public void ExtractSlots(String folder, List<scIntent> intents )
         {
+            List<String> rstLines = new List<String>();
             // MUST BE DONE AFTER INTENTS
             // Read all Slot in the designed folder
             // ADD each word to the defined SlotType
+            var files = Directory.GetFiles(folder);
 
-            return null;
+
+            foreach (var fichier in files)
+            {
+                foreach (var intent in intents)
+                {
+                    foreach (var slot in intent.slots)
+                    {
+                        if (Path.GetFileName(fichier) == slot.type)
+                        {
+                            string[] lines = System.IO.File.ReadAllLines(fichier);
+                            slot.slots.AddRange(lines);
+                        }
+                    }
+                }               
+            }
         }
     } 
 }
